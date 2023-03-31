@@ -21,11 +21,11 @@
                     <td><img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク"></td>
                     <td>
                         <div>
-                            <a href="{{ route('pdca.index', $goal->id) }}">{{ $goal->content }}</a>
+                            <a href="#">{{ $goal->content }}</a>
                         </div>
                     </td>
-                    <td><a href="{{ route('goals.edit') }}">編集</a></td>
-                    <td><a href="{{ route('goals.destroy') }}">削除</a></td>
+                    <td><a href="#">編集</a></td>
+                    <td><a href="#">削除</a></td>
                 </tr>
                 @endforeach
             </tbody>
