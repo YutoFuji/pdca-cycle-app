@@ -13,28 +13,24 @@
     </div>
     <h2 class="text-center navigate mb-3">確認したい目標をクリック</h2>
 
-    <div>
-        <table>
-            <tbody>
-                @foreach($goals as $goal)
-                <tr>
-                    <td><img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク"></td>
-                    <td>
-                        <div>
-                            <a href="#">{{ $goal->content }}</a>
-                        </div>
-                    </td>
-                    <td><a href="#">編集</a></td>
-                    <td><a href="#">削除</a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        <div>
-            <a href="{{ route('goals.create') }}"><img src="{{ asset('/img/作成ボタン.png') }}" alt="作成"></a>
+    <div class="d-flex" style="flex-wrap: wrap;">
+        @foreach($goals as $goal)
+        <div class="w-50">
+            <div>
+                <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
+                <a href="#">{{ $goal->content }}</a>
+            </div>
+            <div>
+                <a href="{{ route('goals.edit', $goal) }}">編集</a>
+                <a href="#">削除</a>
+            </div>
         </div>
-
-        <a href="#">これまでの目標一覧</a>
+        @endforeach
     </div>
+
+    <div>
+        <a href="{{ route('goals.create') }}"><img src="{{ asset('/img/作成ボタン.png') }}" alt="作成"></a>
+    </div>
+
+    <a href="#">これまでの目標一覧</a>
 @endsection

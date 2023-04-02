@@ -46,7 +46,7 @@ class GoalController extends Controller
         $goal->user_id = Auth::id();
         $goal->save();
 
-        return redirect()->route('goal.index');
+        return redirect()->route('goals.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class GoalController extends Controller
      */
     public function edit(Goal $goal)
     {
-        return view('goals.edit');
+        return view('goals.edit', compact('goal'));
     }
 
     /**
@@ -76,7 +76,7 @@ class GoalController extends Controller
         $goal->content = $request->input('content');
         $goal->user_id = Auth::id();
         $goal->save();
-
+        
         return redirect()->route('goals.index');
     }
 
