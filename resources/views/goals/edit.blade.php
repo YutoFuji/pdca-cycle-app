@@ -11,8 +11,16 @@
             </div>
         @endif
     </div>
-            {{--下のaタグをクリックでモーダルをだすようにする--}}
-    <a href="{{ route('goals.index') }}">戻る</a>
+    
+    <!--目標編集キャンセルのモーダル-->
+    @include('modals.goal_update_cancel')
+
+    <div class="d-flex mb-3">
+        <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_update_cancel">
+            戻る
+        </a>          
+    </div>
+
     <h2 class="text-center navigate mb-3">目標の編集</h2>
     <div>
         <p>目標を入力してください</p>

@@ -18,11 +18,16 @@
         <div class="w-50">
             <div>
                 <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
-                <a href="#">{{ $goal->content }}</a>
+                <a href="#">{{ $goal['content'] }}</a>
             </div>
             <div>
-                <a href="{{ route('goals.edit', $goal) }}">編集</a>
-                <a href="#">削除</a>
+                <a href="{{ route('goals.edit', $goal) }}" class="text-decoration-none">編集</a>
+                <!--目標削除のモーダル-->
+                @include('modals.goal_delete')
+
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_deleteModal{{ $goal->id }}">
+                削除
+                </a>
             </div>
         </div>
         @endforeach

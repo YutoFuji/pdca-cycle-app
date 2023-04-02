@@ -11,7 +11,16 @@
             </div>
         @endif
     </div>
-    <a href="{{ route('goals.index') }}">戻る</a>
+
+    <!--目標作成キャンセルのモーダル-->
+    @include('modals.goal_create_cancel')
+
+    <div class="d-flex mb-3">
+        <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_create_cancel">
+            戻る
+        </a>          
+    </div>   
+
     <h2 class="text-center navigate mb-3">目標の作成</h2>
     <div>
         <p>目標を入力してください</p>

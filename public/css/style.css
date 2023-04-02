@@ -1,8 +1,8 @@
 /* layouts.header*/
-.pcda_cycle {
+.pdca_cycle {
     color: #FF7373;
 }
-.pcda_cycle:hover {
+.pdca_cycle:hover {
     color: #FF4141;
 }
 /*goals.index*/
@@ -10,3 +10,21 @@
     color: #FF7373;
 }
 
+/*modals*/
+.modal_true {
+    color: #4E8AFF;
+    text-decoration: none;
+}
+.modal_false {
+    color: #FF7373;
+    text-decoration: none;
+}
+.modal_true:hover {
+    color: #A5C3FF;
+}
+.modal_false:hover {
+    color: #FFC0C0;
+}
+.modal-footer > a {
+    font-size: 20px;
+}
