@@ -15,6 +15,7 @@
 
     <div class="d-flex" style="flex-wrap: wrap;">
         @foreach($goals as $goal)
+        @if($goal->done == true)
         <div class="w-50">
             <div>
                 <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
@@ -22,6 +23,12 @@
             </div>
             <div>
                 <a href="{{ route('goals.edit', $goal) }}" class="text-decoration-none">編集</a>
+
+                <!--目標完了のモーダル-->
+                @include('modals.goal_done')
+
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_doneModal{{ $goal->id }}">完了</a>
+
                 <!--目標削除のモーダル-->
                 @include('modals.goal_delete')
 
@@ -30,6 +37,7 @@
                 </a>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 

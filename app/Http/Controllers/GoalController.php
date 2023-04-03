@@ -72,11 +72,20 @@ class GoalController extends Controller
         $request->validate([
             'content' => 'required',
         ]);
-
+        
         $goal->content = $request->input('content');
         $goal->user_id = Auth::id();
         $goal->save();
         
+        return redirect()->route('goals.index');
+    }
+    
+    public function updateBoolean(Request $request, $id)
+    {
+        $goal = Goal::find($id);
+        $goal->done = false;
+        $goal->save();
+
         return redirect()->route('goals.index');
     }
 

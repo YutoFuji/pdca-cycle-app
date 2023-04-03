@@ -19,3 +19,5 @@ Route::get('/', [GoalController::class, 'index'])->middleware('auth');
 Auth::routes();
 
 Route::resource('goals', GoalController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])->middleware('auth');
+
+Route::put('goals/{id}/updateBoolean', [GoalController::class, 'updateBoolean'])->middleware('auth')->name('goals.updateBoolean');
