@@ -17,7 +17,7 @@
 
     <div class="d-flex mb-3">
         <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_create_cancel">
-            戻る
+            目標一覧に戻る
         </a>          
     </div>   
 

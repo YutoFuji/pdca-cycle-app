@@ -19,6 +19,12 @@ class GoalController extends Controller
         return view('goals.index', compact('goals'));
     }
 
+    public function indexDone()
+    {
+        $goals = Auth::user()->goals;
+        return view('goals.goal_done_list', compact('goals'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -80,13 +86,22 @@ class GoalController extends Controller
         return redirect()->route('goals.index');
     }
     
-    public function updateBoolean(Request $request, $id)
+    public function updateBooleanToFalse(Request $request, $id)
     {
         $goal = Goal::find($id);
         $goal->done = false;
         $goal->save();
 
         return redirect()->route('goals.index');
+    }
+
+    public function updateBooleanToTrue(Request $request, $id)
+    {
+        $goal = Goal::find($id);
+        $goal->done = true;
+        $goal->save();
+
+        return redirect('goals/goal_done_list');
     }
 
     /**

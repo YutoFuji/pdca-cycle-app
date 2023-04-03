@@ -45,5 +45,5 @@
         <a href="{{ route('goals.create') }}"><img src="{{ asset('/img/作成ボタン.png') }}" alt="作成"></a>
     </div>
 
-    <a href="#">これまでの目標一覧</a>
+    <a href="{{ route('to_done_list') }}">これまでの目標一覧</a>
 @endsection
