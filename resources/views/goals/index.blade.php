@@ -13,28 +13,30 @@
     </div>
     <h2 class="text-center navigate mb-3">確認したい目標をクリック</h2>
 
-    <div class="d-flex" style="flex-wrap: wrap;">
+    <div>
         @foreach($goals as $goal)
-        @if($goal->done == true)
-        <div class="w-50">
+        @if($goal->done == false)
+        <div>
             <div>
-                <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
-                <a href="#">{{ $goal['content'] }}</a>
-            </div>
-            <div>
-                <a href="{{ route('goals.edit', $goal) }}" class="text-decoration-none">編集</a>
+                <div>
+                    <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
+                    <h2 class="d-inline">{{ $goal->content }}</h2>
+                </div>
+                <div>
+                    <a href="{{ route('goals.edit', $goal) }}" class="text-decoration-none">編集</a>
 
-                <!--目標完了のモーダル-->
-                @include('modals.goal_done')
+                    <!--目標完了のモーダル-->
+                    @include('modals.goal_done')
 
-                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_doneModal{{ $goal->id }}">完了</a>
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_doneModal{{ $goal->id }}">完了</a>
 
-                <!--目標削除のモーダル-->
-                @include('modals.goal_delete')
+                    <!--目標削除のモーダル-->
+                    @include('modals.goal_delete')
 
-                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_deleteModal{{ $goal->id }}">
-                削除
-                </a>
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#goal_deleteModal{{ $goal->id }}">
+                    削除
+                    </a>
+                </div>
             </div>
         </div>
         @endif

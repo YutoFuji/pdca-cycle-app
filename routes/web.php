@@ -22,6 +22,6 @@ Route::get('goals/goal_done_list', [GoalController::class, "indexDone"])->name('
 
 Route::resource('goals', GoalController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])->middleware('auth');
 
-Route::put('goals/{id}/update_boolean_false', [GoalController::class, 'updateBooleanToFalse'])->middleware('auth')->name('goals.update_boolean_to_false');
-
 Route::put('goals/{id}/update_boolean_true', [GoalController::class, 'updateBooleanToTrue'])->middleware('auth')->name('goals.update_boolean_to_true');
+
+Route::put('goals/{id}/update_boolean_false', [GoalController::class, 'updateBooleanToFalse'])->middleware('auth')->name('goals.update_boolean_to_false');

@@ -94,14 +94,14 @@ class GoalController extends Controller
 
         return redirect()->route('goals.index');
     }
-
+    
     public function updateBooleanToTrue(Request $request, $id)
     {
         $goal = Goal::find($id);
         $goal->done = true;
         $goal->save();
-
-        return redirect('goals/goal_done_list');
+        
+        return redirect()->route('goals.index');
     }
 
     /**

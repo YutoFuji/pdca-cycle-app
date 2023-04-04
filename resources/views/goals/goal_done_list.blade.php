@@ -5,11 +5,11 @@
 
     <div class="d-flex" style="flex-wrap: wrap;">
         @foreach($goals as $goal)
-        @if($goal->done == false)
+        @if($goal->done == true)
         <div class="w-50">
             <div>
                 <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
-                <a href="#">{{ $goal['content'] }}</a>
+                <a href="#">{{ $goal->content }}</a>
             </div>
             <div>
                 <!--目標削除のモーダル-->
