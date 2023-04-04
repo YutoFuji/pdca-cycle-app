@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\PDCAController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +28,7 @@ Route::resource('goals', GoalController::class)->only(['index', 'create', 'store
 Route::put('goals/{id}/update_boolean_true', [GoalController::class, 'updateBooleanToTrue'])->middleware('auth')->name('goals.update_boolean_to_true');
 
 Route::put('goals/{id}/update_boolean_false', [GoalController::class, 'updateBooleanToFalse'])->middleware('auth')->name('goals.update_boolean_to_false');
+
+Route::group(['prefix' => 'goals/{goal_id}', 'middleware' => 'auth'], function () {
+    Route::resource('pdcas', PDCAController::class);
+});

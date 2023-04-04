@@ -12,6 +12,8 @@
         @endif
     </div>
 
+    <h2 class="text-center navigate mb-3">目標の作成</h2>
+    
     <!--目標作成キャンセルのモーダル-->
     @include('modals.goal_create_cancel')
 
@@ -21,7 +23,6 @@
         </a>          
     </div>   
 
-    <h2 class="text-center navigate mb-3">目標の作成</h2>
     <div>
         <p>目標を入力してください</p>
         <div>

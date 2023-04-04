@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Goal extends Model
+class PDCA extends Model
 {
     use HasFactory;
 
-    protected $table = "goals";
+    protected $table = "p_d_c_a_s";
     protected $fillable = [
         "content",
+        "pdca",
         "user_id",
-        "done",
+        "goal_id",
     ];
-
-    public function user() {
-        $this->belongsTo(User::class);
-    }
-}
+} 

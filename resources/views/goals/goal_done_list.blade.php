@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <a href="{{ route('goals.index') }}">戻る</a>
-    <h2 class="text-center navigate mb-3">確認したい目標をクリック</h2>
+<h2 class="text-center navigate mb-3">確認したい目標をクリック</h2>
+<a href="{{ route('goals.index') }}">戻る</a>
 
-    <div class="d-flex" style="flex-wrap: wrap;">
+    <div>
         @foreach($goals as $goal)
         @if($goal->done == true)
-        <div class="w-50">
+        <div>
             <div>
                 <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
-                <a href="#">{{ $goal->content }}</a>
+                <h2 class="d-inline">{{ $goal->content }}</h2>
             </div>
             <div>
                 <!--目標削除のモーダル-->

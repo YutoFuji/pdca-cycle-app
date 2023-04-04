@@ -20,7 +20,7 @@
             <div>
                 <div>
                     <img src="{{ asset('/img/auto_awesome.png') }}" alt="目標のマーク">
-                    <h2 class="d-inline">{{ $goal->content }}</h2>
+                    <a href="{{ route('pdcas.index', $goal->id) }}"><h2 class="d-inline">{{ $goal->content }}</h2></a>
                 </div>
                 <div>
                     <a href="{{ route('goals.edit', $goal) }}" class="text-decoration-none">編集</a>
