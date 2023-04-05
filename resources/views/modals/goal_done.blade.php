@@ -6,7 +6,7 @@
             </div>
             <div class="modal-footer justify-content-around">
                 <button type="button" data-bs-dismiss="modal">完了しない(仮)</button>
-                <form action="{{ route('goals.update_boolean_to_true', $goal) }}" method="post">
+                <form action="{{ route('goals.update_boolean', $goal) }}" method="post">
                     @method('put')
                     @csrf
                     <button type="submit">完了する(仮)</button>

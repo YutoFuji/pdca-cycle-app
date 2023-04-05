@@ -41,7 +41,7 @@ class PDCAController extends Controller
     {
         PDCA::create([
             'content' => $request->input('content'),
-            'pdca' => $request->input('pdca'),
+            'pdca_elem' => $request->input('pdca_elem'),
             'user_id' => Auth::id(),
             'goal_id' => $goal_id,
         ]);

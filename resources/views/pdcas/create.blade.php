@@ -12,19 +12,19 @@
         <div class="form-group">
           <label>PDCA:</label><br>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pdca" id="plan" value="Plan">
+            <input class="form-check-input" type="radio" name="pdca_elem" id="plan" value="Plan">
             <label class="form-check-label" for="plan">Plan</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pdca" id="do" value="Do">
+            <input class="form-check-input" type="radio" name="pdca_elem" id="do" value="Do">
             <label class="form-check-label" for="do">Do</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pdca" id="check" value="Check">
+            <input class="form-check-input" type="radio" name="pdca_elem" id="check" value="Check">
             <label class="form-check-label" for="check">Check</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pdca" id="act" value="Act">
+            <input class="form-check-input" type="radio" name="pdca_elem" id="act" value="Act">
             <label class="form-check-label" for="act">Act</label>
           </div>
         </div>

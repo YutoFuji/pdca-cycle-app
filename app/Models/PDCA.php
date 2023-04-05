@@ -12,7 +12,7 @@ class PDCA extends Model
     protected $table = "p_d_c_a_s";
     protected $fillable = [
         "content",
-        "pdca",
+        "pdca_elem",
         "user_id",
         "goal_id",
     ];
