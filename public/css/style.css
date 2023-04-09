@@ -30,20 +30,16 @@
 }
 
 /* pdcas.index */
-.wrapper {
-    width: 800px;
+#cycle-part {
+    width: 400px;
+    height: 400px;
+}
+#cycle {
+    width: 600px;
     height: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: white;
-    box-sizing: border-box;
-  }
-  
-  .box {
-    flex-basis: 50%;
-    height: 50%;
-    box-sizing: border-box;
-    border: 1px solid black;
-    padding: 10px;
-    font-size: 24px;
-  }
+}
+
+#text-act {
+    left: 50%;
+    top: 50%;
+}

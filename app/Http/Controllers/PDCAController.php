@@ -66,9 +66,9 @@ class PDCAController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($goal_id, $pdca)
     {
-        //
+        return view('pdcas.edit', compact('goal_id', 'pdca'));
     }
 
     /**
@@ -78,19 +78,15 @@ class PDCAController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request, $goal_id, $pdca)
+    {   
+        
+        PDCA::where('id', $pdca)
+            ->where('goal_id', $goal_id)
+            ->update([
+                'content' => $request->input('content'),
+            ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('pdcas.index', compact('goal_id'));
     }
 }

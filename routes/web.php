@@ -23,11 +23,11 @@ Auth::routes();
 
 Route::get('goals/goal_done_list', [GoalController::class, "indexDone"])->name('to_done_list');
 
-Route::resource('goals', GoalController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])->middleware('auth');
+Route::resource('goals', GoalController::class)->except('show')->middleware('auth');
 
 Route::put('goals/{id}/update_boolean', [GoalController::class, 'updateBoolean'])->middleware('auth')->name('goals.update_boolean');
 
 Route::group(['prefix' => 'goals/{goal_id}', 'middleware' => 'auth'], function () {
-    Route::resource('pdcas', PDCAController::class);
+    Route::resource('pdcas', PDCAController::class)->except('destroy')->middleware('auth');
 });
 
