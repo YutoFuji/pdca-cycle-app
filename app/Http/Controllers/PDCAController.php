@@ -16,7 +16,7 @@ class PDCAController extends Controller
      */
     public function index($goal_id)
     {
-        
+
         $pdcas = PDCA::where('goal_id', $goal_id)->get();
         return view('pdcas.index', compact('goal_id', 'pdcas'));
     }
@@ -27,8 +27,13 @@ class PDCAController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($goal_id)
-    {
-        return view('pdcas.create', compact('goal_id'));
+    {   
+        $plan = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Plan')->first();
+        $do = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Do')->first();
+        $check = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Check')->first();
+        $act = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Act')->first();
+        
+        return view('pdcas.create', compact('goal_id', 'plan','do','check','act'));
     }
 
     /**
@@ -38,7 +43,11 @@ class PDCAController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $goal_id)
-    {
+    {   
+        $request->validate([
+            'pdca_elem' => 'required|unique:p_d_c_a_s,pdca_elem,NULL,id,goal_id,'.$goal_id
+        ]);   
+
         PDCA::create([
             'content' => $request->input('content'),
             'pdca_elem' => $request->input('pdca_elem'),

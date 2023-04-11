@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('p_d_c_a_s', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
             $table->string('pdca_elem');
+            $table->text('content');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('goal_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
