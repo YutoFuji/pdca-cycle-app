@@ -28,6 +28,6 @@ Route::resource('goals', GoalController::class)->except('show')->middleware('aut
 Route::put('goals/{id}/update_boolean', [GoalController::class, 'updateBoolean'])->middleware('auth')->name('goals.update_boolean');
 
 Route::group(['prefix' => 'goals/{goal_id}', 'middleware' => 'auth'], function () {
-    Route::resource('pdcas', PDCAController::class)->except('destroy')->middleware('auth');
+    Route::resource('pdcas', PDCAController::class)->only(['index', 'create', 'store']);
 });
 
