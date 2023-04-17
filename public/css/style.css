@@ -1,13 +1,33 @@
-/* layouts.header*/
-.pdca_cycle {
-    color: #FF7373;
+* {
+    margin: 0;
+    padding: 0;
 }
-.pdca_cycle:hover {
-    color: #FF4141;
+
+html {
+    font-size: 100%; /*16px*/
 }
+
 /*goals.index*/
-.navigate {
+.mainred {
     color: #FF7373;
+}
+.mainred-a {
+    color: #FF7373;
+}
+.mainred-a:hover {
+    color: #FF7373;
+    opacity: 0.5;
+    transition: all 0.2s;
+}
+
+.mainblue {
+    color: #4E8AFF;
+}
+
+.mainblue:hover {
+    color: #4E8AFF;
+    opacity: 0.5;
+    transition: all 0.2s;
 }
 
 /*modals*/
@@ -27,20 +47,5 @@
 }
 .modal-footer > a {
     font-size: 20px;
-}
-
-/* pdcas.index */
-#cycle-part {
-    width: 400px;
-    height: 400px;
-}
-#cycle {
-    width: 600px;
-    height: 600px;
-}
-
-#text-act {
-    left: 50%;
-    top: 50%;
 }
 

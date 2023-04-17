@@ -13,68 +13,128 @@
         @endif
     </div>
 
-    <a href="{{ route('pdcas.index', $goal_id) }}">戻る</a>
-
-    <form action="{{ route('pdcas.store', $goal_id) }}" method="post">
-        @csrf
-
-        <div class="form-group">
-            <label>PDCA:</label><br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="pdca_elem" value="Plan" id="plan" data-target="plan">
-                <label class="form-check-label" for="plan">Plan</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="pdca_elem" value="Do" id="do" data-target="do">
-                <label class="form-check-label" for="do">Do</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="pdca_elem" value="Check" id="check" data-target="check">
-                <label class="form-check-label" for="check">Check</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="pdca_elem" value="Act" id="act" data-target="act">
-                <label class="form-check-label" for="act">Act</label>
-            </div>
+    <div>
+        <div>
+            <!--PC用の戻るタグ-->
+        <div class="d-none d-md-block">
+            <a href="{{ route('pdcas.index', $goal_id) }}" style="font-size: 20px;"  class="text-decoration-none mainred-a">サイクル一覧に戻る</a>
         </div>
-        
-        <div id="text"></div>
-
-        <div class="form-group">
-            <input type="text" class="form-control" name="content">
+    
+        <!--スマートフォン用の戻るタグ-->
+        <div class="d-block d-md-none">
+            <a href="{{ route('pdcas.index', $goal_id) }}" style="font-size: 20px;"  class="text-decoration-none mainred-a"><</a>
         </div>
+    </div>
 
-        <button>送信</button>
-    </form>
+    <h2 class="text-center mainred" style="margin-bottom: 20px;">のサイクル</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="bg-light shadow rounded col-lg-8 col-md-10 mx-auto" style="margin-bottom: 30px; height: 300px; padding: 30px;">
+                <form action="{{ route('pdcas.store', $goal_id) }}" method="post">
+                    @csrf
+                    <div class="text-center">
+                        <p class="mainred" style="font-size: 20px">作成する要素を１つ選択してください</p>
+                    </div>
+
+                    <div class="form-group d-flex justify-content-center">
+                        <div class="form-check form-check-inline" style="margin-left: 20px">
+                            <input class="form-check-input" type="radio" name="pdca_elem" value="Plan" id="plan">
+                            <label class="form-check-label" for="plan"><p>Plan</p></label>
+                        </div>
+                        <div class="form-check form-check-inline" style="margin-left: 30px">
+                            <input class="form-check-input" type="radio" name="pdca_elem" value="Do" id="do">
+                            <label class="form-check-label" for="do"><p>Do</p></label>
+                        </div>
+                        <div class="form-check form-check-inline" style="margin-left: 30px">
+                            <input class="form-check-input" type="radio" name="pdca_elem" value="Check" id="check">
+                            <label class="form-check-label" for="check"><p>Check</p></label>
+                        </div>
+                        <div class="form-check form-check-inline" style="margin-left: 30px">
+                            <input class="form-check-input" type="radio" name="pdca_elem" value="Act" id="act">
+                            <label class="form-check-label" for="act"><p>Act</p></label>
+                        </div>
+                        <button type="button" style="display: none;" id="resetButton" class="btn btn-secondary">選択を解除</button>
+                    </div>
+
+                    <div class="text-center">
+                        <div>
+                            <p class="mainred" style="font-size: 20px;">内容を入力してください</p>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            <input type="text" name="content" class="form-control" id="pdca_content">
+
+                            <input type="hidden" name="plan" value={{$plan}} id="pdca_plan">
+                            <input type="hidden" name="do" value={{$do}} id="pdca_do">
+                            <input type="hidden" name="check" value={{$check}} id="pdca_check">
+                            <input type="hidden" name="act" value={{$act}} id="pdca_act">
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="btn btn-secondary btn-lg">作成</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 
     <script>
+        
+        //いずれかのラジオボタンがクリックされたときそれ以外のラジオボタンがnoneになる
         const radio = document.querySelectorAll("input[type='radio']");
-        const text = 'を入力してください';
-        const textField = document.getElementById('text');
-
-        function displayTextBox() {
+        
+        function hideRadioButtons() {
             for (let i = 0; i < radio.length; i++) {
+                const target = radio[i].closest('.form-check');
                 if(radio[i].checked) {
-                const target = radio[i].getAttribute("data-target");
-                document.getElementById(target).style.display = 'block';
-
-                const label = document.querySelector(`label[for=${radio[i].id}]`);
-                label.style.display = 'inline-block';
-                
-                textField.innerHTML = text;
-            }else {
-                const target = radio[i].getAttribute("data-target");
-                document.getElementById(target).style.display = 'none';
-                
-                const label = document.querySelector(`label[for=${radio[i].id}]`);
-                label.style.display = 'none';
-                   }
+                    target.style.display = 'inline-block';
+                    resetButton.style.display ='inline-block';
+                    get_data(i);
+                }else {
+                    target.style.display = 'none';
                 }
             }
-
-        for(let i = 0; i < radio.length; i++) {
-            radio[i].addEventListener("click", displayTextBox);
         }
+
+        function get_data(i) {
+            if(i === 0) {
+                fetch('/pdca-cycle-app/public/api/goals/12/pdcas?pdca=Plan')
+                .then(response => response.json())
+                .then(data => {
+                       console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }else if(i === 1) {
+                content.value = pcda_do.value;
+            }else if(i === 2) {
+                content.value = check.value;
+            }else if(i === 3) {
+                content.value = act.value;
+            }
+        }
+        
+        for(let i = 0; i < radio.length; i++) {
+            radio[i].addEventListener("click", hideRadioButtons);
+        }
+        
+        
+        //resetButtonがクリックされたときラジオボタンがinline-blockになり、それ自身はnoneになる
+        const resetButton = document.getElementById('resetButton');
+
+        resetButton.addEventListener("click", function() {
+        const formChecks = document.querySelectorAll('.form-check');
+            for (let i = 0; i < formChecks.length; i++) {
+                formChecks[i].style.display = 'inline-block';
+                resetButton.style.display = 'none';
+            }
+        });
+
 
     </script>
 @endsection

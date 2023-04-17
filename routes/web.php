@@ -31,3 +31,4 @@ Route::group(['prefix' => 'goals/{goal_id}', 'middleware' => 'auth'], function (
     Route::resource('pdcas', PDCAController::class)->only(['index', 'create', 'store']);
 });
 
+
