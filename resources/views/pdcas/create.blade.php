@@ -102,7 +102,7 @@
 
         function get_data(i) {
             if(i === 0) {
-                fetch('/pdca-cycle-app/public/api/goals/12/pdcas?pdca=Plan')
+                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Plan')
                 .then(response => response.json())
                 .then(data => {
                        console.log(data);
@@ -111,11 +111,32 @@
                     console.error('Error:', error);
                 });
             }else if(i === 1) {
-                content.value = pcda_do.value;
+                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Do')
+                .then(response => response.json())
+                .then(data => {
+                       console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             }else if(i === 2) {
-                content.value = check.value;
+                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Check')
+                .then(response => response.json())
+                .then(data => {
+                       console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             }else if(i === 3) {
-                content.value = act.value;
+                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Act')
+                .then(response => response.json())
+                .then(data => {
+                       console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             }
         }
         

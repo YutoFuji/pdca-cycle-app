@@ -30,7 +30,7 @@ class PDCAController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($goal_id )
+    public function create($goal_id)
     {   
         $plan = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Plan')->first();
         $do = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Do')->first();
@@ -67,9 +67,10 @@ class PDCAController extends Controller
     public function get_pdca(Request $request, $goal_id)
     {
         $pdca = PDCA::where('goal_id', $goal_id)
-        ->where('pdca_elem', $request->pdca)
+        ->where('pdca_elem', $request->pdca_elem)
         ->select('content')
         ->first();
+
         return response()->json($pdca, 200);
     }
 }

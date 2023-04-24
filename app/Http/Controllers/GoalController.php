@@ -47,10 +47,10 @@ class GoalController extends Controller
             'content' => 'required',
         ]);
 
-        $goal = new Goal();
-        $goal->content = $request->input('content');
-        $goal->user_id = Auth::id();
-        $goal->save();
+        Goal::create([
+            'content' => $request->input('content'),
+            'user_id' => Auth::id(),
+        ]);
 
         return redirect()->route('goals.index');
     }

@@ -29,6 +29,5 @@
         </main>
         @include('layouts.footer')
     </div>
-    <script src="{{ asset('/js/content.js') }}"></script>
 </body>
 </html>

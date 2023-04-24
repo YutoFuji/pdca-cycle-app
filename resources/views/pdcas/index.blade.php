@@ -12,24 +12,23 @@
 	    @endif
     </div>
     
-        <div>
-            <div>
-                <!--PC用の戻るタグ-->
-            <div class="d-none d-md-block">
-                <a href="{{ route('goals.index') }}" style="font-size: 20px;"  class="text-decoration-none mainred-a">目標一覧に戻る</a>
-            </div>
-        
-            <!--スマートフォン用の戻るタグ-->
-            <div class="d-block d-md-none">
-                <a href="{{ route('goals.index') }}" style="font-size: 20px;"  class="text-decoration-none mainred-a"><</a>
-            </div>
+    <div class="position-relative">
+        <!--PC用の戻るタグ-->
+        <div class="d-none d-md-block position-absolute">
+            <a href="{{ route('goals.index') }}" style="font-size: 20px; top: 20px; left: 30px;"  class="text-decoration-none mainred-a">目標一覧に戻る</a>
+        </div>
+
+        <!--スマートフォン用の戻るタグ-->
+        <div class="d-block d-md-none position-absolute">
+            <a href="{{ route('goals.index') }}" style="font-size: 20px; top: 20px; left: 30px;"  class="text-decoration-none mainred-a"><</a>
         </div>
 
         <h2 class="text-center mainred" style="margin-bottom: 20px;">のサイクル</h2>
 
-        <div style="text-align: right; margin-right:30px; margin-bottom:20px">
+        <div class="text-center text-md-end" style="margin-right:30px; margin-bottom:20px">
             <button type="button" onclick="location.href='{{ route('pdcas.create', $goal_id) }}'" class="btn btn-secondary btn-lg">作成・編集</button>
         </div>
+    </div>
 
     @php
         $sections =[
