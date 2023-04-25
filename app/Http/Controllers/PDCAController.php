@@ -36,6 +36,7 @@ class PDCAController extends Controller
         $do = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Do')->first();
         $check = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Check')->first();
         $act = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Act')->first();
+        
         return view('pdcas.create', compact('goal_id', 'plan','do','check', 'act'));
     }
 

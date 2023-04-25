@@ -65,6 +65,7 @@
                         <div class="form-group" style="margin-bottom: 15px;">
                             <input type="text" name="content" class="form-control" id="pdca_content">
 
+                            <input type="hidden" id="goal_id" value={{$goal_id}}>
                             <input type="hidden" name="plan" value={{$plan}} id="pdca_plan">
                             <input type="hidden" name="do" value={{$do}} id="pdca_do">
                             <input type="hidden" name="check" value={{$check}} id="pdca_check">
@@ -86,6 +87,9 @@
         
         //いずれかのラジオボタンがクリックされたときそれ以外のラジオボタンがnoneになる
         const radio = document.querySelectorAll("input[type='radio']");
+        const goal_id_element = document.getElementById('goal_id');
+        const goal_id = goal_id_element.value;
+        const inputField = document.getElementById('pdca_content');
         
         function hideRadioButtons() {
             for (let i = 0; i < radio.length; i++) {
@@ -99,45 +103,24 @@
                 }
             }
         }
-
+        
         function get_data(i) {
-            if(i === 0) {
-                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Plan')
-                .then(response => response.json())
-                .then(data => {
-                       console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }else if(i === 1) {
-                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Do')
-                .then(response => response.json())
-                .then(data => {
-                       console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }else if(i === 2) {
-                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Check')
-                .then(response => response.json())
-                .then(data => {
-                       console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }else if(i === 3) {
-                fetch('/pdca-cycle-app/public/api/goals/{goal_id}/pdcas?pdca=Act')
-                .then(response => response.json())
-                .then(data => {
-                       console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }
+            const pdca_elem = [
+                'Plan', 'Do', 'Check', 'Act'
+            ];
+                
+            fetch(`/pdca-cycle-app/public/api/goals/${goal_id}/pdcas?pdca_elem=${pdca_elem[i]}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.hasOwnProperty('content')) {
+                    inputField.value = data.content
+                }else {
+                    inputField.value = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
         
         for(let i = 0; i < radio.length; i++) {
