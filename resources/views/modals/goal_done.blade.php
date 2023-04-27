@@ -5,11 +5,11 @@
                 <h5 class="modal-title" id="goal_doneLabel{{ $goal->id }}">「{{ $goal->content }}」を完了してもよろしいですか？</h5> 
             </div>
             <div class="modal-footer justify-content-around">
-                <button type="button" data-bs-dismiss="modal">完了しない</button>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-primary">完了しない</button>
                 <form action="{{ route('goals.update_boolean', $goal) }}" method="post">
                     @method('put')
                     @csrf
-                    <button type="submit">完了する</button>
+                    <button type="submit" class="btn btn-danger">完了する</button>
                 </form>
             </div>
          </div>
