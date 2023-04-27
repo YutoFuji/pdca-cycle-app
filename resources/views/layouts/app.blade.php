@@ -24,7 +24,7 @@
     <div id="app">
         @include('layouts.header')
 
-        <main class="p-5">
+        <main style="padding:30px 20px;">
             @yield('content')
         </main>
         @include('layouts.footer')

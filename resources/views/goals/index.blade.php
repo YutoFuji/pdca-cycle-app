@@ -12,7 +12,7 @@
         @endif
     </div>
 
-    <p class="text-center mainred" style="margin-bottom: 40px; font-size: 1.5rem;">確認したい目標をクリック</p>
+    <h2 class="text-center mainred" style="margin-bottom: 40px; margin-top: 26px">確認したい目標をクリック</h2>
     
     <div class="container">
         <div class="row">

@@ -27,7 +27,7 @@
         </a>          
     </div>
 
-    <p class="text-center mainred" style="margin-bottom: 40px; font-size: 1.5rem">目標の編集</p>
+    <h2 class="text-center mainred" style="margin-bottom: 40px">目標の編集</h2>
 
     <div class="container">
         <div class="row">

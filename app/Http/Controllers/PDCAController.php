@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Goal;
 use App\Models\PDCA;
-use Illuminate\Queue\Connectors\NullConnector;
 use Illuminate\Support\Facades\Auth;
 
 class PDCAController extends Controller

@@ -22,7 +22,7 @@
         <a href="{{ route('goals.index') }}" style="font-size: 1rem;"  class="text-decoration-none mainred-a"><</a>
     </div>
         
-    <p class="text-center mainred" style="margin-bottom: 40px; font-size: 1.5rem;">確認したい目標をクリック</p>
+    <h2 class="text-center mainred" style="margin-bottom: 40px">確認したい目標をクリック</h2>
 
     <div class="container">
         <div class="row">

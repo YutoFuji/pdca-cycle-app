@@ -16,18 +16,18 @@
     @include('modals.goal_create_cancel')
     <!--PC用の戻るタグ-->
     <div class="d-none d-md-block">
-        <a href="#" style="font-size: 20px;" class="text-decoration-none mainred-a" data-bs-toggle="modal" data-bs-target="#goal_create_cancel">
+        <a href="#" style="font-size: 1rem;" class="text-decoration-none mainred-a" data-bs-toggle="modal" data-bs-target="#goal_create_cancel">
             目標一覧に戻る
         </a>          
     </div>
     <!--スマートフォン用の戻るタグ-->
     <div class="d-block d-md-none">
-        <a href="#" style="font-size: 20px;" class="text-decoration-none mainred-a" data-bs-toggle="modal" data-bs-target="#goal_create_cancel">
+        <a href="#" style="font-size: 1rem;" class="text-decoration-none mainred-a" data-bs-toggle="modal" data-bs-target="#goal_create_cancel">
             <
         </a>          
     </div>
 
-    <h2 class="text-center mainred" style="margin-bottom: 40px">目標の作成</h2>
+    <h2 class="text-center mainred" style="margin-bottom: 20px">目標の作成</h2>
 
     <div class="container">
         <div class="row">
