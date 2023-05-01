@@ -23,7 +23,7 @@
         <a href="{{ route('pdcas.index', $goal_id) }}" style="font-size: 1rem;"  class="text-decoration-none mainred-a"><</a>
     </div>
     
-    <h2 class="text-center mainred" style="margin-bottom: 20px">のサイクル</h2>
+    <h2 class="text-center text-secondary" style="margin-bottom: 20px"><span class="mainred">{{$goal->content}}</span>のサイクル</h2>
 
     <div class="container">
         <div class="bg-light shadow rounded col-lg-8 col-md-10 mx-auto" style="margin-bottom: 30px; height: 300px; padding: 30px;">

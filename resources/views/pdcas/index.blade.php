@@ -22,7 +22,7 @@
         <a href="{{ route('goals.index') }}" style="font-size: 1rem;"  class="text-decoration-none mainred-a"><</a>
     </div>
 
-    <h2 class="text-center mainred" style="margin-bottom: 20px">のサイクル</h2>
+    <h2 class="text-center text-secondary" style="margin-bottom: 20px"><span class="mainred">{{$goal->content}}</span>のサイクル</h2>
 
     @php
         $sections =[

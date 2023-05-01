@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Goal;
 use App\Models\PDCA;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,12 +16,13 @@ class PDCAController extends Controller
      */
     public function index($goal_id)
     {   
+        $goal = Goal::where('id', $goal_id)->first();
         $pdcas = PDCA::where('goal_id', $goal_id)->get();
         $plan = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Plan')->first();
         $do = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Do')->first();
         $check = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Check')->first();
         $act = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Act')->first();
-        return view('pdcas.index', compact('goal_id', 'pdcas', 'plan', 'do', 'check', 'act'));
+        return view('pdcas.index', compact('goal', 'goal_id', 'pdcas', 'plan', 'do', 'check', 'act'));
     }
 
     /**
@@ -30,12 +32,13 @@ class PDCAController extends Controller
      */
     public function create($goal_id)
     {   
+        $goal = Goal::where('id', $goal_id)->first();
         $plan = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Plan')->first();
         $do = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Do')->first();
         $check = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Check')->first();
         $act = PDCA::where('goal_id', $goal_id)->where('pdca_elem', 'Act')->first();
         
-        return view('pdcas.create', compact('goal_id', 'plan','do','check', 'act'));
+        return view('pdcas.create', compact('goal', 'goal_id', 'plan','do','check', 'act'));
     }
 
     /**
