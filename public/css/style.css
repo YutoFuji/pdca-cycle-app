@@ -31,20 +31,6 @@ html {
 }
 
 /*modals*/
-.modal_true {
-    color: #4E8AFF;
-    text-decoration: none;
-}
-.modal_false {
-    color: #FF7373;
-    text-decoration: none;
-}
-.modal_true:hover {
-    color: #A5C3FF;
-}
-.modal_false:hover {
-    color: #FFC0C0;
-}
 .modal-footer > a {
     font-size: 20px;
 }
