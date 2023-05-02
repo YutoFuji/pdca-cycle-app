@@ -30,7 +30,7 @@ function get_data(i) {
     ];
 
     $.ajax({
-        url: `/pdcacycle-app.herokuapp.com/api/goals/${goal_id}/pdcas?pdca_elem=${pdca_elem[i]}`,
+        url: `/api/goals/${goal_id}/pdcas?pdca_elem=${pdca_elem[i]}`,
         dataType: 'json',
         success: function(data) {
             if (data.hasOwnProperty('content')) {
