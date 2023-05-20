@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Goal;
+use App\Http\Requests\CreateGoalRequest;
+use App\Http\Requests\UpdateGoalRequest;
+use App\Services\GoalService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class GoalController extends Controller
 {
+    private $goalService;
+
+    public function __construct(GoalService $goalService)
+    {
+        $this->goalService = $goalService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,13 +24,13 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $goals = Auth::user()->goals;
+        $goals = $this->goalService->getGoalsByUser(Auth::id());
         return view('goals.index', compact('goals'));
     }
 
     public function indexDone()
     {
-        $goals = Auth::user()->goals;
+        $goals = $this->goalService->getCompletedGoalsByUser(Auth::id());
         return view('goals.goal_done_list', compact('goals'));
     }
 
@@ -38,19 +47,12 @@ class GoalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CreateGoalRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'content' => 'required',
-        ]);
-
-        Goal::create([
-            'content' => $request->input('content'),
-            'user_id' => Auth::id(),
-        ]);
+        $this->goalService->createGoal($request->validated(), Auth::id());
 
         return redirect()->route('goals.index');
     }
@@ -58,39 +60,32 @@ class GoalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Goal  $goal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Goal $goal)
+    public function edit($id)
     {
+        $goal = $this->goalService->getGoalById($id);
         return view('goals.edit', compact('goal'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Goal  $goal
+     * @param  \App\Http\Requests\UpdateGoalRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Goal $goal)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'content' => 'required',
-        ]);
-        
-        $goal->content = $request->input('content');
-        $goal->user_id = Auth::id();
-        $goal->save();
-        
+        $this->goalService->updateGoal($id, $request->validated(), Auth::id());
+
         return redirect()->route('goals.index');
     }
     
     public function updateBoolean($id)
     {
-        $goal = Goal::find($id);
-        $goal->done = !$goal->done;
-        $goal->save();
+        $this->goalService->updateGoalDoneStatus($id);
         
         return redirect()->route('goals.index');
     }
@@ -98,12 +93,12 @@ class GoalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Goal  $goal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Goal $goal) {
+    public function destroy($id) {
 
-        $goal->delete();
+        $this->goalService->deleteGoal($id);
 
         return redirect()->route('goals.index');        
    }
