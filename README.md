@@ -1,8 +1,8 @@
 # PDCA Cycle App
+![App Screenshot](https://portfolio-yutofujiwara.herokuapp.com/images/thumbnail.png)
 [Application URL](https://pdcacycle-app.herokuapp.com)
 This is a task management application that helps you manage the PDCA (Plan-Do-Check-Act) cycle.
 
-![App Screenshot](https://portfolio-yutofujiwara.herokuapp.com/images/thumbnail.png)
 
 ## Features
 
