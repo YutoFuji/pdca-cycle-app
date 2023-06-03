@@ -22,10 +22,11 @@ class GoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $goals = $this->goalService->getGoalsByUser(Auth::id());
-        return view('goals.index', compact('goals'));
+        $keyword = $request->input('keyword');
+        return view('goals.index', compact('goals', 'keyword'));
     }
 
     public function indexDone()

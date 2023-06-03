@@ -12,6 +12,11 @@
         @endif
     </div>
 
+    <form method="GET">
+        <input type="search" placeholder="目標を検索" name="keyword" value="@isset($keyword){{ $keyword }}@endisset">
+        <input type="submit" value="検索">
+    </form>
+    
     <h2 class="text-center mainred" style="margin-bottom: 40px; margin-top: 26px">確認したい目標をクリック</h2>
     
     <div class="container">

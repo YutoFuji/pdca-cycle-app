@@ -19,6 +19,11 @@ class GoalService
         return $this->goalRepository->getAllGoals(Auth::id());
     }
 
+    public function search($keyword)
+    {   
+        return $this->goalRepository->searchByKeyword($keyword);
+    }
+
     public function getCompletedGoalsByUser()
     {
         return $this->goalRepository->getDoneGoals(Auth::id());

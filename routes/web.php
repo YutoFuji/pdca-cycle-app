@@ -21,9 +21,11 @@ Route::get('/', [GoalController::class, 'index'])->middleware('auth');
 
 Auth::routes();
 
-Route::get('goals/goal_done_list', [GoalController::class, "indexDone"])->name('to_done_list');
-
 Route::resource('goals', GoalController::class)->except('show')->middleware('auth');
+
+Route::get('/', [GoalController::class, 'index'])->name('goals.index')->middleware('auth');
+
+Route::get('goals/goal_done_list', [GoalController::class, "indexDone"])->name('to_done_list');
 
 Route::put('goals/{id}/update_boolean', [GoalController::class, 'updateBoolean'])->middleware('auth')->name('goals.update_boolean');
 

@@ -11,6 +11,13 @@ class GoalRepository
         return Goal::where('user_id', $userId)->get();
     }
 
+    public function searchByKeyword($keyword)
+    {
+        if (!empty($keyword)) {
+            Goal::where('content', 'LIKE', "%{$keyword}%")->get();
+        }
+    }
+
     public function getDoneGoals($userId)
     {
         return Goal::where('user_id', $userId)->where('done', true)->get();
