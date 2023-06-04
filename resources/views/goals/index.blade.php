@@ -13,8 +13,11 @@
     </div>
 
     <form method="GET">
-        <input type="search" placeholder="目標を検索" name="keyword" value="@isset($keyword){{ $keyword }}@endisset">
-        <input type="submit" value="検索">
+        <input type="search" placeholder="目標を検索" name="keyword" value="@isset($keyword){{ $keyword }}@endisset" style="margin: none;">
+        <input type="submit" value="検索" class="btn btn-secondary">
+        <button class="btn btn-secondary">
+            <a href="{{ route('goals.index') }}" style="text-decoration: none; color: #ffffff">クリア</a>
+        </button>
     </form>
     
     <h2 class="text-center mainred" style="margin-bottom: 40px; margin-top: 26px">確認したい目標をクリック</h2>
