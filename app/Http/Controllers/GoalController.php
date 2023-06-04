@@ -24,8 +24,9 @@ class GoalController extends Controller
      */
     public function index(Request $request)
     {
-        $goals = $this->goalService->getGoalsByUser(Auth::id());
         $keyword = $request->input('keyword');
+        $goals = $this->goalService->search(Auth::id(), $keyword);
+        
         return view('goals.index', compact('goals', 'keyword'));
     }
 
@@ -53,7 +54,7 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        $this->goalService->createGoal($request->validated(), Auth::id());
+        $this->goalService->createGoal($request->content, Auth::id());
 
         return redirect()->route('goals.index');
     }
